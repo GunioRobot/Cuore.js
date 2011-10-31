@@ -2,9 +2,9 @@ CUORE.Services.Button = CUORE.Class(CUORE.Service, {
 
     init: function() {
         CUORE.Services.Button.super.init.call(this);
-        
+
         this.name = 'BUTTON';
-        this.executionPrefix = 'CLICKED'; 
+        this.executionPrefix = 'CLICKED';
     },
 
     execute: function(procedure, params) {

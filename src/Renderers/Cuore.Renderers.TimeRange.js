@@ -1,5 +1,5 @@
 CUORE.Renderers.TimeRange = CUORE.Class(CUORE.Renderer, {
-  
+
     init: function() {
         this.label = null;
         this.startHourSelect = null;
@@ -8,31 +8,31 @@ CUORE.Renderers.TimeRange = CUORE.Class(CUORE.Renderer, {
 
     draw: function(component) {
         CUORE.Renderers.TimeRange.super.draw.call(this, component);
-        
+
         var componentSetStartHour = CUORE.Core.bind(component, component.setStartHour);
         var componentsetEndHour = CUORE.Core.bind(component, component.setEndHour);
-        
+
         this.panel.innerHTML = null;
         this.addClass('timeRange');
-        
+
         this.label = CUORE.Dom.createElement('label', null, this.panel);
-        
+
         this.startHourSelect = CUORE.Dom.createElement('select', {
-            className: 'hourSelect startHourSelect' 
+            className: 'hourSelect startHourSelect'
         }, this.panel);
 
         CUORE.Dom.Event.add(this.startHourSelect, 'change', componentSetStartHour);
-        
+
         this.endHourSelect = CUORE.Dom.createElement('select', {
-            className: 'hourSelect endHourSelect' 
+            className: 'hourSelect endHourSelect'
         }, this.panel);
 
         CUORE.Dom.Event.add(this.endHourSelect, 'change', componentsetEndHour);
     },
-    
+
     updateWhenDrawn: function(component) {
         this._setOptions(component);
-        
+
         this.label.innerHTML = component.getText();
         this.startHourSelect.value = component.journey.starts();
         this.endHourSelect.value   = component.journey.ends();
@@ -59,10 +59,10 @@ CUORE.Renderers.TimeRange = CUORE.Class(CUORE.Renderer, {
         var slots   = this._getSlots.apply(null, slotsOptions);
         var element = this[property + 'HourSelect'];
         this._clearOptions(element);
-        
+
         for (var i = 0, len = slots.length; i < len; i++) {
             var slot = slots[i][property + 's']();
-            
+
             CUORE.Dom.createElement('option', {
                 value: slot,
                 text: slot
@@ -80,10 +80,10 @@ CUORE.Renderers.TimeRange = CUORE.Class(CUORE.Renderer, {
     _clearOptions: function(selectElement) {
         selectElement.options.length = 0;
     },
-    
+
     _getTimeByProperty: function(property) {
         var element = this[property + 'HourSelect'];
-        
+
         return element.options[element.selectedIndex].value;
-    } 
+    }
 });

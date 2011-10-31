@@ -6,7 +6,7 @@ CUORE.Renderers.SwitchButton = CUORE.Class(CUORE.Renderers.Button, {
 
         this._putComponentText(component, status, element);
     },
-    
+
     setClassCSS: function (component) {
         CUORE.Renderers.SwitchButton.super.setClassCSS.call(this, component);
         if (!this.panel) return;

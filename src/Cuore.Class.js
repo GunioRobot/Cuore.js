@@ -13,7 +13,7 @@ CUORE.Class = function(Parent, props) {
 
     var F = function() {};
     F.prototype = Parent.prototype;
-    
+
     Child.prototype = new F();
     Child.super = Parent.prototype;
     Child.prototype.constructor = Child;

@@ -1,5 +1,5 @@
 var ShowCasePage = CUORE.Class(CUORE.Page, {
-    
+
     initializeServices: function() {
     },
 

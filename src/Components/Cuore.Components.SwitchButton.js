@@ -2,7 +2,7 @@ CUORE.Components.SwitchButton = CUORE.Class(CUORE.Components.Button, {
 
     init: function (buttonName, activeKey, inactiveKey) {
         CUORE.Components.SwitchButton.super.init.call(this, buttonName);
-        
+
         this.active = true;
         this.activeLabel = this.text;
         this.inactiveLabel = this.text;
@@ -26,9 +26,9 @@ CUORE.Components.SwitchButton = CUORE.Class(CUORE.Components.Button, {
 
     click: function (executeParent) {
         var isNotDefined = (typeof executeParent === 'undefined');
-        
+
         if (executeParent || isNotDefined) {
-            CUORE.Components.SwitchButton.super.click.call(this); 
+            CUORE.Components.SwitchButton.super.click.call(this);
         }
 
         this.switchState();
@@ -45,10 +45,10 @@ CUORE.Components.SwitchButton = CUORE.Class(CUORE.Components.Button, {
 
     getLabel: function (key) {
         if (!key) return;
-        
+
         var labelService = this.getLabelService();
         var params = { 'key': key };
-        
+
         if (labelService) {
             labelService.execute('getLabel', params, true);
         }

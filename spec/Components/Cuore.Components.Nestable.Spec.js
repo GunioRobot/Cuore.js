@@ -1,7 +1,7 @@
 describe("NestableComponent", function () {
 
     afterEach(function(){
-        var container = document.getElementById('xhtmlToTest');   
+        var container = document.getElementById('xhtmlToTest');
         container.innerHTML = '';
     });
 
@@ -42,7 +42,7 @@ describe("NestableComponent", function () {
         var anyComponent = new CUORE.Component();
 
         spyOn(anyComponent, "eventDispatch");
-        
+
         var aComponent = new CUORE.Components.Nestable();
 
         aComponent.host(anyComponent);
@@ -68,7 +68,7 @@ describe("NestableComponent", function () {
         var anyComponent = new CUORE.Component();
         var aComponent = new CUORE.Components.Nestable();
         var container = createTestContainer();
-        
+
         aComponent.setContainer(container.id);
         aComponent.host(anyComponent);
 
@@ -78,20 +78,20 @@ describe("NestableComponent", function () {
         var firstChildId = aComponentDOMElement.childNodes[0].id;
         expect(firstChildId).toEqual(anyComponent.getUniqueID());
     });
-    
+
     it("updates nested components inside parent component", function () {
         var anyComponent = new CUORE.Component();
         spyOn(anyComponent,'updateRender');
         var aComponent = new CUORE.Components.Nestable();
-        
+
         aComponent.host(anyComponent);
 
         aComponent.updateRender();
 
         expect(anyComponent.updateRender).toHaveBeenCalled();
     });
-    
-    
+
+
     it("should not replace hosted components with its text, when updating drawn component", function () {
         var anyComponent = new CUORE.Component();
         var aComponent = new CUORE.Components.Nestable();
@@ -140,13 +140,13 @@ describe("NestableComponent", function () {
         expect(!! document.getElementById(anyComponentId)).toBeFalsy();
 
     });
- 
+
     var createTestContainer = function() {
         var container = document.createElement('div');
         container.id = "testingContainer";
         var panel = document.getElementById("xhtmlToTest");
         panel.appendChild(container);
-       
+
         return container;
     };
 

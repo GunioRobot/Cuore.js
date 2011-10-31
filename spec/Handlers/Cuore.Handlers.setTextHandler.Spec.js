@@ -20,9 +20,9 @@ describe("setTextHandler", function () {
 
         var theMessage = new CUORE.Message();
         theMessage.putOnAnswer("text",testText);
-        
+
         var correctMessage = theMessage;
-       
+
         var incorrectMessage = new CUORE.Message();
 
         aSetTextHandler.handle(correctMessage);
@@ -32,5 +32,5 @@ describe("setTextHandler", function () {
         aSetTextHandler.handle(incorrectMessage);
 
         expect(aButton.setText).not.toHaveBeenCalled();
-    }); 
+    });
 });

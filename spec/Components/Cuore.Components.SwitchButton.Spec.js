@@ -1,27 +1,27 @@
 describe("SwitchButton", function () {
-	
+
     var xhr;
 
     beforeEach(function(){
         xhr = sinon.useFakeXMLHttpRequest();
         var requests = [];
-        
+
         xhr.onCreate = function (xhr) {
             requests.push(xhr);
         };
-      
+
         CUORE.Core.createXHR = function(){
             return xhr;
         };
     });
 
     afterEach(function(){
-        var container = document.getElementById('xhtmlToTest');   
+        var container = document.getElementById('xhtmlToTest');
         container.innerHTML = '';
 
         xhr.restore();
     });
-	
+
     it("inherits Component and Button", function () {
 
         var keyActive = "testKeyActive";
@@ -82,7 +82,7 @@ describe("SwitchButton", function () {
         var inactiveLabel = "inactive";
         var activeMessage = new CUORE.Message();
 		activeMessage.putOnAnswer("text",activeLabel);
-	
+
         var inactiveMessage = new CUORE.Message();
 		inactiveMessage.putOnAnswer("text",inactiveLabel);
 
@@ -149,7 +149,7 @@ describe("SwitchButton", function () {
 		var container = document.createElement('div');
         container.id ="testingContainer"
         document.getElementById("xhtmlToTest").appendChild(container);
-        
+
         return container;
     }
 

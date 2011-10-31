@@ -1,5 +1,5 @@
 CUORE.Components.Input = CUORE.Class(CUORE.Component, {
-    
+
     init: function(key, type) {
         CUORE.Components.Input.super.init.call(this);
 

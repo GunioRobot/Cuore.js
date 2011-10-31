@@ -31,7 +31,7 @@ CUORE.Page = CUORE.Class(null, {
     addComponent: function(component, container, replaceContent) {
         var name = this._generateUUID();
         this._subcribeComponentEvents(component);
-        
+
         component.setName(name);
         this.components[component.getName()] = component;
         replaceContent && this.cleaners.push(component.getName());
@@ -47,7 +47,7 @@ CUORE.Page = CUORE.Class(null, {
                 if (this._componentIsInCleaners(this.cleaners, componentName)) {
                     currentComponent.getContainer().innerHTML = '';
                 }
-                currentComponent.draw(); 
+                currentComponent.draw();
             }
         }
     },
@@ -55,7 +55,7 @@ CUORE.Page = CUORE.Class(null, {
     getBaseURL: function() {
         return this.baseURL;
     },
-    
+
     _subcribeComponentEvents: function(component) {
         var events = component.getManagedEvents();
         var bus = this._getBus();
@@ -64,19 +64,19 @@ CUORE.Page = CUORE.Class(null, {
             bus.subscribe(component, events[i]);
         }
     },
-    
+
     _getBus: function() {
         return CUORE.Bus;
     },
-    
+
     _getComponent: function(name) {
         return this.components[name] || null;
     },
-    
+
     _generateUUID: function() {
         return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
     },
-    
+
     _componentIsInCleaners: function(arr, obj) {
         var i = arr.length;
         while (i--) {

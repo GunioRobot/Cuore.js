@@ -5,18 +5,18 @@ describe("Component", function () {
     beforeEach(function(){
         xhr = sinon.useFakeXMLHttpRequest();
         var requests = [];
-        
+
         xhr.onCreate = function (xhr) {
             requests.push(xhr);
         };
-      
+
         CUORE.Core.createXHR = function(){
             return xhr;
         };
     });
 
     afterEach(function(){
-        var container = document.getElementById('xhtmlToTest');   
+        var container = document.getElementById('xhtmlToTest');
         container.innerHTML = '';
 
         xhr.restore();
@@ -130,12 +130,12 @@ describe("Component", function () {
         aComponent.draw();
         var id = aComponent.getUniqueID();
         var createdElement = document.getElementById(id);
-        
+
         expect(id).toEqual(componentName + "_inner");
-        
+
         expect(!!(createdElement)).toBeTruthy();
-         
-        expect(createdElement.tagName).toEqual("DIV"); 
+
+        expect(createdElement.tagName).toEqual("DIV");
         expect(createdElement.className).toEqual("innerComponentDiv");
         expect(createdElement.parentNode).toBe(container);
     });
@@ -143,12 +143,12 @@ describe("Component", function () {
     it("could be removed", function () {
         var container = createTestContainer();
         var aComponent = new CUORE.Component();
-        aComponent.setContainer(container.id); 
-        
+        aComponent.setContainer(container.id);
+
         var id = aComponent.getUniqueID();
 
         aComponent.draw();
-        
+
         aComponent.destroy();
         var createdElement = document.getElementById(id);
 
@@ -163,9 +163,9 @@ describe("Component", function () {
 
         aComponent.addClass("testingClass");
         aComponent.draw();
-        
+
         var element = document.getElementById(componentId);
-        
+
         expect(element.className).toBe("innerComponentDiv testingClass");
 
         aComponent.addClass("testingClass2");
@@ -178,14 +178,14 @@ describe("Component", function () {
         var aComponent = new CUORE.Component();
         aComponent.setContainer(container.id);
         var componentId = aComponent.getUniqueID();
-        
+
         aComponent.addClass("testingClass");
         aComponent.draw();
-        
+
         var element = document.getElementById(componentId);
-        
+
         expect(element.className).toBe("innerComponentDiv testingClass");
-        
+
         aComponent.removeClass("testingClass");
         expect(element.className).toBe("innerComponentDiv");
     });
@@ -337,13 +337,13 @@ describe("Component", function () {
         aComponent.setContainer(container.id);
         var testText = "testText";
         aComponent.setText(testText);
-        
+
         var component = document.getElementById(aComponent.getUniqueID());
 
         expect(component).toBeNull();
-        
+
     });
-    
+
     it("has a method that retrieves its container", function () {
         var container = createTestContainer();
         var aComponent = new CUORE.Component();
@@ -351,7 +351,7 @@ describe("Component", function () {
         aComponent.setContainer(container.id);
         expect(aComponent.getContainer()).toEqual(container);
     });
-    
+
     it("fetch and execute a service from page and execute the procedure when it is executed", function () {
 
         var procedureName = "aProcedure";
@@ -410,7 +410,7 @@ describe("Component", function () {
         container.id = "testingContainer";
         var panel = document.getElementById("xhtmlToTest");
         panel.appendChild(container);
-       
+
         return container;
     };
 

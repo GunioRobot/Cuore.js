@@ -64,7 +64,7 @@ describe("Page", function () {
         expect(aService instanceof CUORE.Services.Button).toBeTruthy();
 
     });
-    
+
     it("allows baseUrl initialization", function () {
         var aPage = new CUORE.Page();
         expect(aPage.getBaseURL()).toEqual("");
@@ -90,7 +90,7 @@ describe("Page", function () {
         var aPage = new CUORE.Page();
 
         var aComponent = createDummyComponent();
-        var anotherComponent = createDummyComponent(); 
+        var anotherComponent = createDummyComponent();
 
         var testingContainer = "testingContainer";
 

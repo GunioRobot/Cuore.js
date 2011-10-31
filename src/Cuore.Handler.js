@@ -1,5 +1,5 @@
 CUORE.Handler = CUORE.Class(null, {
-    
+
     init: function () {
         this.owner = null;
     },
@@ -21,4 +21,4 @@ CUORE.Handler = CUORE.Class(null, {
     getPage: function () {
         return document.page;
     }
-}); 
+});

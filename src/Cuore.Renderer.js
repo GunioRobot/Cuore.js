@@ -18,34 +18,34 @@ CUORE.Renderer = CUORE.Class(null, {
         var divNameSuffix = '_inner';
         return componentName + divNameSuffix;
     },
-    
+
     render: function(component) {
         !this.panel && this.draw(component);
         this.update(component)
     },
-    
+
     update: function(component) {
         this.panel && this.updateWhenDrawn(component);
     },
 
     updateWhenDrawn: function(component) {
-        if (component.getText()) { 
+        if (component.getText()) {
             this.panel.innerHTML = component.getText();
         }
     },
-    
+
     erase: function() {
         if (this.panel) {
             this.panel.parentNode.removeChild(this.panel);
-            delete this.panel; 
+            delete this.panel;
         }
     },
-    
+
     addClass: function(aClass) {
         this.panelClasses.push(aClass);
         this.panel && CUORE.Dom.addClass(this.panel, aClass);
     },
-    
+
     removeClass: function(aClass) {
         this._eraseClassFromPanelClasses(aClass);
         this.panel && CUORE.Dom.removeClass(this.panel, aClass);
@@ -57,7 +57,7 @@ CUORE.Renderer = CUORE.Class(null, {
 
     draw: function(component) {
         var divID = this.innerDivName(component.getName());
-        
+
         this.panel = CUORE.Dom.createElement('div', {
             id: divID
         }, this.container);

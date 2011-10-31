@@ -1,7 +1,7 @@
 describe("Collapsable Panel", function () {
 
     afterEach(function(){
-        var container = document.getElementById('xhtmlToTest');   
+        var container = document.getElementById('xhtmlToTest');
         container.innerHTML = '';
     });
 
@@ -84,7 +84,7 @@ describe("Collapsable Panel", function () {
         container.id = "testingContainer";
         var panel = document.getElementById("xhtmlToTest");
         panel.appendChild(container);
-       
+
         return container;
     };
 });

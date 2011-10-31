@@ -1,7 +1,7 @@
 CUORE.Component = CUORE.Class(null, {
 
     init: function() {
-        this.name = 'aComponent'; 
+        this.name = 'aComponent';
         this.service = 'NULL';
         this.procedure = 'nullProcedure';
         this.I18NKey = null;
@@ -35,7 +35,7 @@ CUORE.Component = CUORE.Class(null, {
         this.renderer.erase();
         CUORE.Bus.unsubscribe(this, this.getManagedEvents());
     },
-    
+
     getLabelService: function() {
         return this.getService('LABELS');
     },
@@ -84,7 +84,7 @@ CUORE.Component = CUORE.Class(null, {
     setName: function(aName) {
         this.name = aName;
     },
-    
+
     setContainer: function(container) {
         this.renderer.setContainer(container);
     },
@@ -100,7 +100,7 @@ CUORE.Component = CUORE.Class(null, {
 
     getLabel: function() {
         if (!this.I18NKey || !this.getLabelService()) return;
-        
+
         var params = { key: this.I18NKey };
         this.getLabelService().execute('getLabel', params, true);
     },

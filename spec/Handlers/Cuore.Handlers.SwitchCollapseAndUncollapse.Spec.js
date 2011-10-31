@@ -1,5 +1,5 @@
 describe("SwitchCollapseAndUncollapseHandler", function () {
-    
+
     it("inherits Handler", function () {
         var aSwitchCollapseHandler = new CUORE.Handlers.SwitchCollapseAndUncollapse();
 

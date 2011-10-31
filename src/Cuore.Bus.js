@@ -1,24 +1,24 @@
 CUORE.Bus = (function(undefined) {
-    
+
     var subscriptions = [];
-    
+
     var subscribe = function(subscriber, eventName) {
         if (!_subscriptionExists(subscriber, eventName)) {
             subscriptions.push([subscriber, eventName]);
         }
     };
-    
+
     var unsubscribe = function(subscriber, events) {
         for (var i = 0, len = events.length; i < len; i++) {
             var theSubscription = [subscriber, events[i]];
             _removeSubscription(theSubscription);
         }
     };
-    
+
     var hasSubscriptions = function() {
         return (subscriptions.length > 0);
     };
-    
+
     var subscribers = function(theEvent) {
         var selectedSubscribers = [];
         for (var i = 0, len = subscriptions.length; i < len; i++) {
@@ -37,11 +37,11 @@ CUORE.Bus = (function(undefined) {
             subscribersList[i].eventDispatch(eventName, params);
         }
     };
-    
+
     var reset = function() {
         subscriptions = [];
     };
-    
+
     var _subscriptionExists = function(subscriber, eventName) {
         var result = false;
         var theSubscription = [subscriber, eventName];
@@ -57,7 +57,7 @@ CUORE.Bus = (function(undefined) {
         }
         return result;
     }
-    
+
     var _removeSubscription = function(theSubscription) {
         for (var i = 0, subscription; subscription = subscriptions[i]; i++) {
             var sameSubscriber = (subscription[0] === theSubscription[0]);

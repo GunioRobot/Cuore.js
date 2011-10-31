@@ -2,7 +2,7 @@ CUORE.Renderers.Button = CUORE.Class(CUORE.Renderer, {
 
     init: function() {
         CUORE.Renderers.Button.super.init.call(this);
-        
+
         this.DOMClass = 'button';
     },
 
@@ -11,7 +11,7 @@ CUORE.Renderers.Button = CUORE.Class(CUORE.Renderer, {
             id: this.innerDivName(component.getName()),
             href: '#'
         }, this.container);
-        
+
         this.span = CUORE.Dom.createElement('span', null, this.panel);
 
         this.addClass(component.getButtonName());
@@ -43,11 +43,11 @@ CUORE.Renderers.Button = CUORE.Class(CUORE.Renderer, {
 
     addEvents: function(component) {
         CUORE.Dom.Event.remove(this.panel, 'click');
-        CUORE.Dom.Event.stopDefault(this.panel, 'click'); 
-        
+        CUORE.Dom.Event.stopDefault(this.panel, 'click');
+
         if (component.isEnable()) {
             var componentClick = CUORE.Core.bind(component, component.click);
             CUORE.Dom.Event.add(this.panel, 'click', componentClick);
         }
-    }   
+    }
 });

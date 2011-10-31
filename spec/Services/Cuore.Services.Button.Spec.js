@@ -38,5 +38,5 @@ describe("ButtonService", function() {
         expect(paramEmitted.getFromQuery("key")).toEqual("value");
         expect(paramEmitted.getFromQuery("buttonName")).toEqual(testingProcedure);
     });
-    
+
 });

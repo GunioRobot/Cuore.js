@@ -5,18 +5,18 @@ describe("TimeRange", function () {
     beforeEach(function(){
         xhr = sinon.useFakeXMLHttpRequest();
         var requests = [];
-        
+
         xhr.onCreate = function (xhr) {
             requests.push(xhr);
         };
-      
+
         CUORE.Core.createXHR = function(){
             return xhr;
         };
     });
 
     afterEach(function(){
-        var container = document.getElementById('xhtmlToTest');   
+        var container = document.getElementById('xhtmlToTest');
         container.innerHTML = '';
 
         xhr.restore();
@@ -58,10 +58,10 @@ describe("TimeRange", function () {
         var theComponent = getTimeRange();
         theComponent.draw();
         DOMObject = document.getElementById(theComponent.getUniqueID());
-            
+
         var startHourSelect = DOMObject.childNodes[1];
         var startSelectOptions = startHourSelect.options;
-        
+
         expect(startSelectOptions[0].value).toEqual("00:00");
         expect(startSelectOptions[0].innerHTML).toEqual("00:00");
         expect(startSelectOptions[23].value).toEqual("23:00");
@@ -121,7 +121,7 @@ describe("TimeRange", function () {
         var selectedHour = endHourSelect.options[endHourSelect.selectedIndex].value;
         expect(selectedHour).toEqual(endHour);
         selectedHour = startHourSelect.options[startHourSelect.selectedIndex].value;
-       
+
         expect(selectedHour).toEqual(startHour);
     });
 
@@ -138,7 +138,7 @@ describe("TimeRange", function () {
         expect(theComponent.getStartHour()).toEqual("09:00");
 
         endSelect.selectedIndex = 2;
-        
+
         CUORE.Dom.Event.fire(endSelect, 'change');
         expect(theComponent.getEndHour()).toEqual('12:00');
     });

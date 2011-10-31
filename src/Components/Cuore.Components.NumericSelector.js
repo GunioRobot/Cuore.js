@@ -11,7 +11,7 @@ CUORE.Components.NumericSelector = CUORE.Class(CUORE.Components.Input, {
 
     draw: function() {
         CUORE.Components.NumericSelector.super.draw.call(this);
-        
+
         this.setValue(this.getValue());
     },
 
@@ -28,7 +28,7 @@ CUORE.Components.NumericSelector = CUORE.Class(CUORE.Components.Input, {
     setValue: function(aValue) {
         var normalizedValue = this._normalizeValue(aValue);
         CUORE.Components.NumericSelector.super.setValue.call(this, normalizedValue);
-        
+
         this.updateRender();
         this.notifyChanges();
     },
@@ -37,7 +37,7 @@ CUORE.Components.NumericSelector = CUORE.Class(CUORE.Components.Input, {
         var bus = this.getBus();
         var dataValue = parseInt(this.getValue(), 10);
         var data = { value: dataValue };
-        
+
         bus.emit('COMPONENT_' + this.name + '_CHANGED', data);
     },
 
@@ -47,7 +47,7 @@ CUORE.Components.NumericSelector = CUORE.Class(CUORE.Components.Input, {
 
     setLimSup: function(newLimSup) {
         if (newLimSup < this.limInf) newlimSup = this.limInf;
-        
+
         this.limSup = newLimSup;
         this.setValue(null);
     },
@@ -70,11 +70,11 @@ CUORE.Components.NumericSelector = CUORE.Class(CUORE.Components.Input, {
     setIncrementer: function(newIncrementer) {
         this.incrementer = newIncrementer;
     },
-    
+
     _normalizeValue: function(value) {
         if (value === '') value = this.limInf;
         if (value === null) value = this.getValue();
-          
+
         var normalizedValue = this._checkLimits(value);
 
         return normalizedValue;

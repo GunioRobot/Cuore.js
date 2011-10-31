@@ -1,27 +1,27 @@
 describe("Label Panel", function() {
-    
+
     var xhr;
 
     beforeEach(function(){
         xhr = sinon.useFakeXMLHttpRequest();
         var requests = [];
-        
+
         xhr.onCreate = function (xhr) {
             requests.push(xhr);
         };
-      
+
         CUORE.Core.createXHR = function(){
             return xhr;
         };
     });
 
     afterEach(function(){
-        var container = document.getElementById('xhtmlToTest');   
+        var container = document.getElementById('xhtmlToTest');
         container.innerHTML = '';
 
         xhr.restore();
     });
-    
+
     it("inherits Component", function() {
         var thePanel = new CUORE.Components.LabelPanel();
 
@@ -55,7 +55,7 @@ describe("Label Panel", function() {
         container.id = "testingContainer";
         var panel = document.getElementById("xhtmlToTest");
         panel.appendChild(container);
-       
+
         return container;
     };
 });

@@ -1,5 +1,5 @@
 describe("NullService", function () {
-	
+
     it("inherits Service", function () {
         var aService = new CUORE.Services.Null();
         expect(aService instanceof CUORE.Service).toBeTruthy();

@@ -1,8 +1,8 @@
 CUORE.Components.Nestable = CUORE.Class(CUORE.Component, {
-    
+
     init: function() {
         CUORE.Components.Nestable.super.init.call(this);
-        
+
         this.hostedComponents = [];
     },
 
@@ -13,19 +13,19 @@ CUORE.Components.Nestable = CUORE.Class(CUORE.Component, {
     hosted: function (anyComponent) {
         return this.hostedComponents;
     },
-    
+
     getManagedEvents: function () {
         var result = CUORE.Components.Nestable.super.getManagedEvents.call(this);
-        
+
         for (var i = 0, len = this.hostedComponents.length; i < len; i++) {
             result.push.apply(result, this.hostedComponents[i].getManagedEvents());
         }
         return result;
     },
-    
+
     eventDispatch: function (eventName, params) {
         CUORE.Components.Nestable.super.eventDispatch.call(this, eventName, params);
-        
+
         for (var i = 0, len = this.hostedComponents.length; i < len; i++) {
             this.hostedComponents[i].eventDispatch(eventName, params);
         }
@@ -33,7 +33,7 @@ CUORE.Components.Nestable = CUORE.Class(CUORE.Component, {
 
     draw: function () {
         CUORE.Components.Nestable.super.draw.call(this);
-        
+
         for (var i = 0, aComponent; aComponent = this.hostedComponents[i]; i++) {
             var containerId = this.renderer.innerDivName(this.getName());
             aComponent.setContainer(containerId);
@@ -43,7 +43,7 @@ CUORE.Components.Nestable = CUORE.Class(CUORE.Component, {
 
     updateRender: function () {
         CUORE.Components.Nestable.super.updateRender.call(this);
-        
+
         for (var i = 0, aComponent; aComponent = this.hostedComponents[i]; i++) {
             aComponent.updateRender();
         }
@@ -58,7 +58,7 @@ CUORE.Components.Nestable = CUORE.Class(CUORE.Component, {
 
     setName: function (name) {
         CUORE.Components.Nestable.super.setName.call(this, name);
-        
+
         var ordinal = 1;
         for (var i = 0, len = this.hostedComponents.length; i < len; i++) {
             var component = this.hostedComponents[i];

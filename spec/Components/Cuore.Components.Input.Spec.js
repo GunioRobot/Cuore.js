@@ -1,27 +1,27 @@
 describe("Input", function () {
-	
+
     var xhr;
 
     beforeEach(function(){
         xhr = sinon.useFakeXMLHttpRequest();
         var requests = [];
-        
+
         xhr.onCreate = function (xhr) {
             requests.push(xhr);
         };
-      
+
         CUORE.Core.createXHR = function(){
             return xhr;
         };
     });
 
     afterEach(function(){
-        var container = document.getElementById('xhtmlToTest');   
+        var container = document.getElementById('xhtmlToTest');
         container.innerHTML = '';
 
         xhr.restore();
     });
-    
+
     it("inherits Component", function () {
         var theComponent = getComponentInput();
         expect(theComponent instanceof CUORE.Components.Input).toBeTruthy();
@@ -91,14 +91,14 @@ describe("Input", function () {
         DOMInput = document.getElementById(aComponent.getUniqueID()).getElementsByTagName("input")[0];
         expect(DOMInput.type).toEqual("text");
 
-        var container = document.getElementById('xhtmlToTest');   
+        var container = document.getElementById('xhtmlToTest');
         container.innerHTML = '';
         aComponent = new CUORE.Components.Input(undefined, "password");
         aComponent.setContainer("xhtmlToTest");
         aComponent.draw();
         DOMInput = document.getElementById(aComponent.getUniqueID()).getElementsByTagName("input")[0];
         expect(DOMInput.type).toEqual("password");
-        
+
     });
 
     it("allows set the text without drawing previously", function () {
@@ -127,9 +127,9 @@ describe("Input", function () {
         var value = DOMObject.innerHTML;
         expect(value).toMatch("testText");
     });
-    
+
     var getComponentInput = function() {
-       
+
         var aComponent = new CUORE.Components.Input("CanonicalKey");
         aComponent.setContainer("xhtmlToTest");
         return aComponent;

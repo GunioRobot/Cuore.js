@@ -2,7 +2,7 @@ CUORE.Services.Label = CUORE.Class(CUORE.Service, {
 
     init: function() {
         CUORE.Services.Label.super.init.call(this);
-        
+
         this.name = 'LABELS';
         this.cache = document.labels || {};
         this.setLocale(navigator.language || navigator.browserLanguage);
@@ -18,7 +18,7 @@ CUORE.Services.Label = CUORE.Class(CUORE.Service, {
     getLabel: function(params, eventName) {
         var eventNameWithKey = eventName + this.SEPARATOR + params.key;
         var cachedLabel = this.fromCache(params.key);
-        
+
         if (cachedLabel) {
             var cachedResponse = new CUORE.Message();
             cachedResponse.putMapOnQuery(params);
@@ -38,9 +38,9 @@ CUORE.Services.Label = CUORE.Class(CUORE.Service, {
     emit: function(eventName, response) {
         var theKey = this.extractKey(eventName);
         if (!theKey) return;
-        
+
         var theMessage = new CUORE.Message(response);
-        
+
         if (theMessage.getFromAnswer('text')) {
             this.cache[this.locale][theKey] = theMessage.getFromAnswer('text');
         }

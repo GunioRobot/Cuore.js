@@ -1,5 +1,5 @@
 describe("PrintHandler", function () {
-	
+
     it("inherits Handlet", function () {
         var theHandler = new CUORE.Handlers.Print();
 

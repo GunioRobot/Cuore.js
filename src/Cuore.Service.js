@@ -1,4 +1,4 @@
-CUORE.Service = CUORE.Class(null, {  
+CUORE.Service = CUORE.Class(null, {
 
     init: function () {
         this.name = 'ABSTRACT';
@@ -11,7 +11,7 @@ CUORE.Service = CUORE.Class(null, {
     execute: function (procedure, params, asynchronous) {
         var eventName = this.getEventNameForExecution(procedure);
         this[procedure](params, eventName);
-       
+
         var theMessage = new CUORE.Message();
         theMessage.putMapOnQuery(params);
         this.lastDataSent = theMessage;
@@ -25,11 +25,11 @@ CUORE.Service = CUORE.Class(null, {
         var theMessage = new CUORE.Message();
         theMessage.putMapOnQuery(params);
         this.lastDataSent = theMessage;
-        
+
         var paramsData = {'query': theMessage.asJson()};
-        
+
         var callback = this._responseCallback(eventName);
-        
+
         CUORE.Core.request(url, paramsData, callback);
     },
 
@@ -62,13 +62,13 @@ CUORE.Service = CUORE.Class(null, {
     getBus: function () {
         return CUORE.Bus;
     },
-    
+
     _responseCallback: function(eventName) {
         var emit = this.emit;
-        
+
         return function(response) {
             emit(eventName, response);
         }
     }
-    
+
 });

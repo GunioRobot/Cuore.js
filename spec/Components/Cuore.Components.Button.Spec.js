@@ -1,27 +1,27 @@
 describe("Button", function () {
-	
+
     var xhr;
 
     beforeEach(function(){
         xhr = sinon.useFakeXMLHttpRequest();
         var requests = [];
-        
+
         xhr.onCreate = function (xhr) {
             requests.push(xhr);
         };
-      
+
         CUORE.Core.createXHR = function(){
             return xhr;
         };
     });
 
     afterEach(function(){
-        var container = document.getElementById('xhtmlToTest');   
+        var container = document.getElementById('xhtmlToTest');
         container.innerHTML = '';
 
         xhr.restore();
     });
-   
+
     it("inherits Component", function () {
         var aButton = new CUORE.Components.Button();
 
@@ -82,7 +82,7 @@ describe("Button", function () {
 
         aButton.addClass(aDOMClass);
         var DOMButton = document.getElementById(aButton.getUniqueID());
-        
+
         expect(DOMButton.tagName).toEqual("A");
         expect(DOMButton.innerHTML).toMatch(buttonText);
 
@@ -104,7 +104,7 @@ describe("Button", function () {
         var DOMButton = document.getElementById(aButton.getUniqueID());
         expect(CUORE.Dom.hasClass(DOMButton, buttonClass)).toBeTruthy();
     });
-    
+
     it("has a click event that when it is fired calls click", function () {
         var container = createTestContainer();
 
@@ -112,7 +112,7 @@ describe("Button", function () {
         var aButton = new CUORE.Components.Button(buttonName, "CanonicalKey");
         aButton.setContainer(container.id);
         spyOn(aButton,'click');
-        
+
         aButton.draw();
 
         var DOMButton = document.getElementById(aButton.getUniqueID());
@@ -135,10 +135,10 @@ describe("Button", function () {
         aButton.getService=function() {
           return myMockedService;
         }
-        aButton.click();  
+        aButton.click();
         expect(myMockedService.execute).toHaveBeenCalledWith(buttonName,someData);
     });
-    
+
     it("default event is stopped even when disabled", function () {
         var container = createTestContainer();
 
@@ -151,7 +151,7 @@ describe("Button", function () {
 
         expect(CUORE.Dom.Event.stopDefault).toHaveBeenCalled();
     });
-    
+
     it("allows disabling and enabling behaviour", function () {
         var buttonName = "buttonName";
         var undrawnButton = new CUORE.Components.Button(buttonName, "CanonicalKey");
@@ -204,7 +204,7 @@ describe("Button", function () {
         expect(DOMButton.className.indexOf("disabled") > -1).toBeTruthy();
 
         aButton.enable();
-		
+
         expect(DOMButton.className.indexOf("disabled") > -1).toBeFalsy();
         aButton.disable();
         expect(CUORE.Dom.hasClass(DOMButton, "disabled")).toBeTruthy();
@@ -248,7 +248,7 @@ describe("Button", function () {
         container.id = "testingContainer";
         var panel = document.getElementById("xhtmlToTest");
         panel.appendChild(container);
-       
+
         return container;
     };
 

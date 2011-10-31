@@ -2,7 +2,7 @@ describe("Numeric Selector", function () {
 
     afterEach(function(){
         var panel = document.getElementById('xhtmlToTest');
-        panel.innerHTML = '';    
+        panel.innerHTML = '';
     });
 
     it("inherits Component and Input", function () {
@@ -20,16 +20,16 @@ describe("Numeric Selector", function () {
         var DOMObject = document.getElementById(aNumericSelector.getUniqueID());
         var children = DOMObject.childNodes;
         var span = children[2];
-        
+
         expect(span.className.indexOf('minusButton') > -1).toBeTruthy();
 
         var inputElement = children[1];
         expect(inputElement.className.indexOf('numericSelector') > -1).toBeTruthy();
         expect(inputElement.value).toEqual(aNumericSelector.limInf + '');
-   
-        var eventsFocus = CUORE.Dom.Event.hasEvents(inputElement, 'focus'); 
+
+        var eventsFocus = CUORE.Dom.Event.hasEvents(inputElement, 'focus');
         var eventsBlur = CUORE.Dom.Event.hasEvents(inputElement, 'blur');
-        
+
         expect(eventsBlur).toBeTruthy();
         expect(eventsFocus).toBeTruthy();
     });
@@ -43,9 +43,9 @@ describe("Numeric Selector", function () {
         children = DOMObject.childNodes;
         var plusButton = children[2];
         expect(plusButton.tagName).toEqual("A");
-        
-        var eventsClick = CUORE.Dom.Event.hasEvents(plusButton, 'click'); 
-        
+
+        var eventsClick = CUORE.Dom.Event.hasEvents(plusButton, 'click');
+
         expect(eventsClick).toBeTruthy();
     });
 
@@ -57,7 +57,7 @@ describe("Numeric Selector", function () {
         children = DOMObject.childNodes;
         var minusButton = children[2];
         var eventsClick = CUORE.Dom.Event.hasEvents(minusButton, 'click');
-        
+
         expect(minusButton.tagName).toEqual("A");
         expect(eventsClick).toBeTruthy();
     });
@@ -140,22 +140,22 @@ describe("Numeric Selector", function () {
 
         CUORE.Dom.Event.fire(theInput, 'focus');
         theInput.value = 2;
-        CUORE.Dom.Event.fire(theInput, 'blur'); 
+        CUORE.Dom.Event.fire(theInput, 'blur');
         expect(aNumericSelector.getValue()).toEqual('2');
 
         CUORE.Dom.Event.fire(theInput, 'focus');
         theInput.value = '';
-        CUORE.Dom.Event.fire(theInput, 'blur'); 
+        CUORE.Dom.Event.fire(theInput, 'blur');
         expect(aNumericSelector.getValue()).toEqual('2');
-        
+
         CUORE.Dom.Event.fire(theInput, 'focus');
         theInput.value = 'we34';
-        CUORE.Dom.Event.fire(theInput, 'blur'); 
+        CUORE.Dom.Event.fire(theInput, 'blur');
         expect(aNumericSelector.getValue()).toEqual('2');
-        
+
         CUORE.Dom.Event.fire(theInput, 'focus');
         theInput.value = '2.5';
-        CUORE.Dom.Event.fire(theInput, 'blur'); 
+        CUORE.Dom.Event.fire(theInput, 'blur');
         expect(aNumericSelector.getValue()).toEqual('2');
     });
 
@@ -171,7 +171,7 @@ describe("Numeric Selector", function () {
         aNumericSelector.setIncrementer(incrementer);
         var plusButton = children[1];
         CUORE.Dom.Event.fire(plusButton, 'click');
-        
+
         var expected = (parseInt(value) + incrementer).toString();
 
         expect(aNumericSelector.getValue()).toEqual(expected);
@@ -180,7 +180,7 @@ describe("Numeric Selector", function () {
         var minusButton = children[0];
         var incrementer = 2;
         aNumericSelector.setIncrementer(incrementer);
-        CUORE.Dom.Event.fire(minusButton, 'click'); 
+        CUORE.Dom.Event.fire(minusButton, 'click');
         expected = (value - incrementer).toString();
 
         expect(aNumericSelector.getValue()).toEqual(expected);
